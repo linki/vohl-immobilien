@@ -1,0 +1,17 @@
+<% title "Kontakt" %>
+
+<%= image_tag "vohl_300_mono.jpg", :align => :right %>
+<table id="contact_people_info">
+  <tbody>
+    <tr>
+      <% for contact_person in @contact_people %>
+        <td>
+          <%= image_tag contact_person.picture_url %><br />
+					<strong><%= contact_person.name %></strong><br />
+					<%= contact_person.position %>
+				</td>
+			<% end %>	
+    </tr>
+  </tbody>
+</table>
+<%= render :partial => 'form' %>

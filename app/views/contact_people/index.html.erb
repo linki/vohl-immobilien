@@ -1,0 +1,23 @@
+<% title "Contact People" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Position</th>
+		<th>Picture</th>
+    <th>Email</th>
+  </tr>
+  <% for contact_person in @contact_people %>
+    <tr>
+      <td><%=h contact_person.name %></td>
+      <td><%=h contact_person.position %></td>
+			<td><%=h contact_person.picture_url %></td>
+      <td><%=h contact_person.email %></td>
+      <td><%= link_to "Anzeigen", contact_person %></td>
+      <td><%= link_to "Bearbeiten", edit_contact_person_path(contact_person) %></td>
+      <td><%= link_to "Löschen", contact_person, :confirm => 'Sind Sie sicher?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Contact Person anlegen", new_contact_person_path %></p>

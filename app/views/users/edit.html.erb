@@ -1,0 +1,41 @@
+<% title "Benutzer bearbeiten" %>
+
+<%= error_messages_for :user %>
+<% form_for @user do |f| %>
+  <p>
+    <%= f.label :salutation, "Anrede" %><br />
+    <%= f.text_field :salutation %>
+  </p>
+  <p>
+    <%= f.label :name, "Name" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :company, "Firma" %><br />
+    <%= f.text_field :company %>
+  </p>  
+  <p>
+    <%= f.label :phone, "Telefon" %><br />
+    <%= f.text_field :phone %>
+  </p>  
+  <p>
+    <%= f.label :login, "Loginname" %><br />
+    <%= f.text_field :login %>
+  </p>  
+  <p>
+    <%= f.label :email, "Email" %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+	<% for role in Role.find(:all) %>
+	  <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role) %>
+	  <%= role.name %>
+	<% end %>
+  </p>
+  <p><%= f.submit "Abschicken" %></p>
+<% end %>
+
+<p>
+  <%= link_to "Anzeigen", @user %> |
+  <%= link_to "Alle anzeigen", users_path %>
+</p>

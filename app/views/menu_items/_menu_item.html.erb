@@ -1,0 +1,17 @@
+<li <%= current_menu?(menu_item) ? 'class="active"' : 'class="inactive"' %>>
+	<%- if menu_item.root? -%>
+		<%= link_to "<span class=\"menu-left\"></span><span class=\"menu-mid\">#{menu_item.name}</span><span class=\"menu-right\"></span>", show_url(menu_item), :popup => popup_for(menu_item) -%>
+	<%- else -%>
+		<%= link_to menu_item.name, show_url(menu_item), :popup => popup_for(menu_item) -%>
+	<%- end -%>
+	<%- unless menu_item.children.empty? -%>
+	<%- if rekursive -%>
+	<%= menu_item.root? ? "<div class=\"sub\">" : "" -%>
+  		<ul>
+	  		<%= render :partial => menu_item.children, :locals => { :administration => administration } -%>
+		</ul>
+		<div class="btm-bg"></div>
+	<%= menu_item.root? ? "</div>" : "" -%>
+	<%- end -%>
+	<%- end -%>
+</li>

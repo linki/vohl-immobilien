@@ -1,0 +1,24 @@
+<%= error_messages_for :contact_message %>
+<% form_for @contact_message do |f| %>
+  <p>
+    <%= f.label :recipient, "Senden an" %><br />
+    <%= f.collection_select :recipient, @contact_people, :email, :name_with_position %>
+  </p>
+  <p>
+    <%= f.label :name, "Ihr Name" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :company, "Ihre Firma" %><br />
+    <%= f.text_field :company %>
+  </p>
+  <p>
+    <%= f.label :email, "Ihre Email" %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :message, "Ihre Nachricht" %><br />
+    <%= f.text_area :message %>
+  </p>
+  <p><%= f.submit "Absenden" %></p>
+<% end %>

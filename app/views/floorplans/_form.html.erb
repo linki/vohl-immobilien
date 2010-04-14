@@ -1,0 +1,36 @@
+<%= error_messages_for :floorplan %>
+<% form_for @floorplan do |f| %>
+  <p>
+    <%= f.label :name, "Name" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :kind, "Art" %><br />
+    <%= f.text_field :kind %>
+  </p>
+  <p>
+    <%= f.label :location, "Lage" %><br />
+    <%= f.text_field :location %>
+  </p>
+  <p>
+    <%= f.label :price_per_meter, "Preis/m² (eingeschränkt sichtbar)" %><br />
+    <%= f.text_field :price_per_meter %> €
+  </p>
+  <p>
+    <%= f.label :square_meters, "Quadratmeterzahl (eingeschränkt sichtbar)" %><br />
+    <%= f.text_field :square_meters %> m²
+  </p>  
+	<p>
+    <%= f.label :full_price, "Kaufpreis (eingeschränkt sichtbar)" %><br />
+    <%= f.text_field :full_price %> €
+  </p>
+  <p>
+    <%= f.label :status, "Status" %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.label :file_url, "Dateipfad (mit http://)" %><br />
+    <%= f.text_field :file_url %>
+  </p>
+  <p><%= f.submit "Abschicken" %></p>
+<% end %>

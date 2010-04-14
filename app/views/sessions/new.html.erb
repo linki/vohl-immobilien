@@ -1,0 +1,23 @@
+﻿<% title "Log In", false %>
+
+<h1>Log In</h1>
+<p>Falls Sie noch keinen Zugang besitzen können sich sich <%= link_to "hier Registrieren.", signup_path %></a></p>
+<% form_tag session_path do -%>
+
+<% if @login_failed %>
+  <p><%= link_to "Haben Sie Ihr Passwort vergessen?", forgot_path %></p>
+<% end %>  
+
+<p><%= label_tag 'Loginname' %><br />
+<%= text_field_tag 'login', @login %></p>
+
+<p><%= label_tag 'Passwort' %><br/>
+<%= password_field_tag 'password', nil %></p>
+
+<!--
+<p><%= check_box_tag 'remember_me', '1', @remember_me %>
+<%= label_tag 'remember_me', 'Ich bin öfter hier, meinen Login speichern' %></p>
+-->
+
+<p><%= submit_tag 'Einloggen' %></p>
+<% end -%>

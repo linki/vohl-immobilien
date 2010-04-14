@@ -1,0 +1,16 @@
+<%= error_messages_for :page %>
+<% form_for @page do |f| %>
+  <p>
+    <%= f.label :name, "Titel" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :permalink, "Permalink" %><br />
+    <%= f.text_field :permalink %>
+  </p>
+  <p>
+    <%= f.label :content, "Inhalt" %><br />
+    <%= fckeditor_textarea :page, :content, :width => '100%', :height => '600px' %>
+  </p>
+  <p><%= f.submit "Bestätigen" %></p>
+<% end %>

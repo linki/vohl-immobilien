@@ -1,0 +1,32 @@
+<% title "Downloads" %>
+
+<% unless logged_in? %>
+  <p><strong>Bitte <%= link_to "loggen Sie sich ein", login_path %> um die Dateien herunterladen zu können</strong></p>
+<% end %>
+
+<% for category in @categories do %>
+  <strong><%= category.name %>
+	  <% if admin? %>
+	    <%= link_to edit_image, edit_category_path(category) %>
+	  <% end %>
+	</strong>
+	
+	<% unless category.description.blank? %>
+	  <p>
+	  	<%= simple_format category.description %>
+	  </p>
+	<% end %>
+
+	<ul id="downloads">
+	  <%= render :partial => category.downloads %>
+	</ul>
+
+<% end %>
+
+<br />
+
+
+
+<% if admin? %>
+	<p><%= new_image %> <%= link_to "Neuer Download", new_download_path %></p>
+<% end %>

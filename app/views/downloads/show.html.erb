@@ -1,0 +1,24 @@
+<% title "Download" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @download.name %>
+</p>
+<p>
+  <strong>Beschreibung:</strong>
+  <%=h @download.description %>
+</p>
+<p>
+  <strong>URL:</strong>
+  <%=h @download.url %>
+</p>
+<p>
+  <strong>Kategorie:</strong>
+  <%=h @download.category.name if @download.category %>
+</p>
+
+<p>
+  <%= link_to "Editieren", edit_download_path(@download) %> |
+  <%= link_to "Löschen", @download, :confirm => 'Sind Sie sich sicher?', :method => :delete %> |
+  <%= link_to "Alle anzeigen", downloads_path %>
+</p>

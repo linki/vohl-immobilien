@@ -1,0 +1,14 @@
+.bundle
+.DS_Store
+log/*.log
+tmp/**/*
+tmp/restart.txt
+public/system
+config/database.yml
+config/safe.conf
+config/deploy.rb
+Capfile
+db/*.sqlite3
+public/assets
+public/assets2
+dump.sql

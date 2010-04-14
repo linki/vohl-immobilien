@@ -1,0 +1,21 @@
+﻿<% title "Grundrisse" %>
+<p>Bitte klicken Sie auf den gewünschten Grundriss:</p>
+<table id="grundrisse">
+<tr>
+<th width="15%">Grundriss</th>
+<th width="15%">Art</th>
+<th width="10%">Lage</th>
+<th width="10%">Preis/m²</th>
+<th width="10%">Quadratmeter</th>
+<th width="15%">Kaufpreis</th>
+<th width="15%">Status</th>
+</tr>
+<%= render :partial => @floorplans %>
+</table>
+<br/>
+<% adminarea do %>
+<p>
+<%= link_to "Neuen Grundriss hinzufügen", new_floorplan_path %></p>
+<% end %>
+<p><a href="http://linki.dreitondesign.de/vohl/downloads/allgemein/Loftland_A3_08-03-04.pdf" target="_blanc">Lageplan</a> vom Loftland:
+<p><a href="http://linki.dreitondesign.de/vohl/downloads/allgemein/Loftland_A3_08-03-04.pdf" target="_blanc"></><img src="images/loftland_klein.jpg"></a></p>

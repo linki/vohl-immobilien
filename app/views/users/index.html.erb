@@ -1,0 +1,30 @@
+<% title "Benutzerübersicht" %>
+
+<table>
+  <tr>
+	<th>Anrede</th>
+    <th>Name</th>
+	<th>Firma</th>
+	<th>Telefon</th>
+	<th>Login</th>
+    <th>Email</th>
+	<th>Rollen</th>
+	<th>Aktiviert</th>
+  </tr>
+  <% for user in @users %>
+    <tr>
+	  <td><%=h user.salutation %></td>	
+      <td><%= link_to h(user.name), user %></td>	
+	  <td><%=h user.company %></td>	
+	  <td><%=h user.phone %></td>	
+      <td><%=h user.login %></td>
+      <td><%=h user.email %></td>
+	  <td><%= user.roles.collect(&:name).join(', ') %></td>
+	  <td><%= user.activated_at ? user.activated_at.to_s(:db) : link_to("Aktivieren", activate_path(:activation_code => user.activation_code)) %></td>
+      <td><%= link_to edit_image, edit_user_path(user) %></td>
+      <td><%= link_to_delete delete_image, user %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Neuen Benutzer anlegen", new_user_path %></p>

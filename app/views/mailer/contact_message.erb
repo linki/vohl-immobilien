@@ -1,0 +1,9 @@
+Sie haben am <%= @contact_message.created_at.to_s(:short) %> eine Kontaktnachricht über das Vohl Immobilien Kontaktformular erhalten.
+
+Name: <%= @contact_message.name %>
+Firma: <%= @contact_message.company %>
+Email: <%= @contact_message.email %>
+
+Nachricht:
+
+<%= @contact_message.message %>

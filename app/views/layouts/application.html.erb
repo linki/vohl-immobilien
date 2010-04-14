@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title><%= h(yield(:title) || "Kein Titel") %></title>
+	<%= stylesheet_link_tag 'main' %>
+	<%= stylesheet_link_tag 'application' %>
+	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag :fckeditor %>
+    <%= yield(:head) %>
+  </head>
+  <body>
+  	<div id="container">
+		<div id="header">
+			<div id="logo">
+				<object classid="CLSID:D27CDB6E-AE6D-11cf-96B8-444553540000" width="600" height="94" codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=4,0,0,0">
+				    <param name="movie" value="/flash/header_vohl.swf">
+				    <param name="quality" value="high">
+				    <param name="scale" value="exactfit">
+				    <param name="menu" value="true">
+				    <embed src="/flash/header_vohl.swf" quality="high" scale="exactfit" menu="false"
+				           width="600" height="94" swLiveConnect="false"
+				           type="application/x-shockwave-flash"
+				           pluginspage="http://www.macromedia.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash">
+				    </embed>
+				</object>
+			</div>
+			<div id="login">
+				<%= render :partial => 'users/user_bar' %>
+				
+				<% if false %>
+				<% unless logged_in? %>
+					<% form_tag session_path do -%>
+						<p><input id="login" name="login" type="text" onblur="if(this.value=='') this.value='Benutzername';" onfocus="if(this.value=='Benutzername') this.value='';" value="Benutzername" /></p>
+						<p><input id="password" name="password" type="password" onblur="if(this.value=='') this.value='Password';" onfocus="if(this.value=='Password') this.value='';" value="Password" /></p>
+						<p><%= submit_tag 'Log in' %></p>
+					<% end -%>
+				<% else %>
+					<%= link_to "logout, #{current_user.login}", logout_path %>
+				<% end %>
+				<% end %>
+			</div>
+		</div>  		
+		
+	  	<div id="navigation">
+			<div id="nav-left"></div>
+			<div id="nav-main">
+				<ul id="nav">
+					<%= render :partial => @menu_items, :locals => { :administration => false, :rekursive => true } %>
+				</ul>
+			</div>
+			<div id="nav-right"></div>
+		</div>
+
+		<div id="main">
+	
+			<div id="notify">
+				<%- flash.each do |name, msg| -%>
+			    	<%= content_tag :p, msg, :id => "flash_#{name}" %>
+			    <%- end -%>	
+			</div>
+				
+			<div id="pathway">
+				<%= @controller.respond_to?(:current_page) ? breadcrumbs_for(@current_menu_item) : "" %>
+			</div>
+		
+			<div id="content">
+
+			    <%- if show_title? -%>
+			    	<h1><%=h yield(:title) %></h1>
+				<%- end -%>
+			      
+				<%= yield %>
+			</div>
+
+			<div id="footer">
+				<ul>
+					<% for menu_item in @menu_items do %>
+						<%= link_to menu_item.name, show_url(menu_item) -%>
+					<% end %>
+				</ul>
+			</div>
+	
+		</div>
+
+    </div>
+  </body>
+</html>

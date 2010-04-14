@@ -1,0 +1,18 @@
+<% title "Categories" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+		<th>Beschreibung</th>
+  </tr>
+  <% for category in @categories %>
+    <tr>
+      <td><%=h category.name %></td>
+			<td><%=h category.description %></td>
+      <td><%= link_to "Anzeigen", category %></td>
+      <td><%= link_to "Bearbeiten", edit_category_path(category) %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Category anlegen", new_category_path %></p>

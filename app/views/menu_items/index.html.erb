@@ -1,0 +1,7 @@
+<% title "Menüpunkte" %>
+
+<ul id="nav_admin">
+  <%= render :partial => 'admin_menu_item', :collection => @menu_items %>
+</ul>
+
+<p><%= link_to "Neuer Menüpunkt", new_menu_item_path %></p>

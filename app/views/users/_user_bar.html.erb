@@ -1,0 +1,8 @@
+<% if logged_in? -%>
+  <div id="user-bar-greeting"><nobr>Eingeloggt als</nobr> <nobr><%= current_user.name %></nobr></div>
+  <div id="user-bar-action"  >(<%= link_to "Ausloggen", logout_path, { :title => "Ausloggen" }    %>)</div>
+<% else -%>
+  <div id="user-bar-greeting"><%= link_to_login_with_IP 'Nicht eingeloggt', :style => 'border: none;' %></div>
+  <div id="user-bar-action"  ><%= link_to "Einloggen",  login_path,  { :title => "Einloggen" } %> /
+                               <%= link_to "Registrieren", signup_path, { :title => "Account erstellen" } %></div>
+<% end -%>

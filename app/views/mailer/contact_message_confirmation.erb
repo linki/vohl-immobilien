@@ -1,0 +1,12 @@
+Sehr geehrte(r) Herr/Frau <%= @contact_message.name %>,
+
+Sie haben eine Nachricht an Vohl Immobilien geschrieben.
+<%- if @contact_message.recipient.blank? -%>
+  Wir melden uns umgehend bei Ihnen.
+<%- else -%>
+  Ich melde mich umgehend bei Ihnen.
+<%- end -%>
+
+Ihre Nachricht lautete: 
+
+<%= @contact_message.message %>

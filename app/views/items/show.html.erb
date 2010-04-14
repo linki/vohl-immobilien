@@ -1,0 +1,28 @@
+<% title "Item" %>
+
+<p>
+  <strong>Type:</strong>
+  <%=h @item.type %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%=h @item.name %>
+</p>
+<p>
+  <strong>Permalink:</strong>
+  <%=h @item.permalink %>
+</p>
+<p>
+  <strong>Content:</strong>
+  <%=h @item.content %>
+</p>
+<p>
+  <strong>Published:</strong>
+  <%=h @item.published %>
+</p>
+
+<p>
+  <%= link_to "Bearbeiten", edit_item_path(@item) %> |
+  <%= link_to_delete "Löschen", @item %> |
+  <%= link_to "Zur Übersicht", items_path %>
+</p>

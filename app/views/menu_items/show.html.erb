@@ -1,0 +1,28 @@
+<% title "Menüpunkt" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @menu_item.name %>
+</p>
+<p>
+  <strong>Übergeordnetes Element:</strong>
+  <%=h @menu_item.parent.name if @menu_item.parent %>
+</p>
+<p>
+  <strong>Position:</strong>
+  <%=h @menu_item.position %>
+</p>
+<p>
+  <strong>Verlinkt auf Seite:</strong>
+  <%= link_to @menu_item.page.name, @menu_item.page if @menu_item.page %>
+</p>
+<p>
+  <strong>Alternativer Permalink:</strong>
+  <%= link_to @menu_item.permalink, show_url(@menu_item)  %>
+</p>
+
+<p>
+  <%= link_to "Editieren", edit_menu_item_path(@menu_item) %> |
+  <%= link_to "Löschen", @menu_item, :confirm => 'Sind Sie sich sicher?', :method => :delete %> |
+  <%= link_to "Alle anziegen", menu_items_path %>
+</p>

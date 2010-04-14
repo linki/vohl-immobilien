@@ -1,0 +1,36 @@
+<% title "Benutzer" %>
+
+<p>
+  <strong>Anrede:</strong>
+  <%=h @user.salutation %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%=h @user.name %>
+</p>
+<p>
+  <strong>Firma:</strong>
+  <%=h @user.company %>
+</p>
+<p>
+  <strong>Telefon:</strong>
+  <%=h @user.phone %>
+</p>
+<p>
+  <strong>Loginname:</strong>
+  <%=h @user.login %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= mail_to h(@user.email) %>
+</p>
+<p>
+  <strong>Rollen:</strong>
+  <%= @user.roles.collect(&:name).join(', ') %>
+</p>
+
+<p>
+  <%= link_to "Bearbeiten", edit_user_path(@user) %> |
+  <%= link_to "Löschen", @user, :confirm => 'Sind Sie sich sicher?', :method => :delete %> |
+  <%= link_to "Alle anzeigen", users_path %>
+</p>

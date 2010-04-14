@@ -1,0 +1,14 @@
+<li>
+	<%= link_to admin_menu_item.name, show_url(admin_menu_item) -%>
+	
+	[<%= breadcrumbs_for admin_menu_item %>] (<%= link_to admin_menu_item.page.name, admin_menu_item.page if admin_menu_item.page %>)
+    <%= link_to "Anzeigen", admin_menu_item %>
+    <%= link_to "Editieren", edit_menu_item_path(admin_menu_item) %>
+	<%= link_to "Löschen", admin_menu_item, :confirm => 'Sind Sie sich sicher?', :method => :delete %>
+
+	<%- unless admin_menu_item.children.empty? -%>
+	<ul>
+  		<%= render :partial => 'admin_menu_item', :collection => admin_menu_item.children -%>
+	</ul>
+	<%- end -%>
+</li>

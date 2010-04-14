@@ -1,0 +1,24 @@
+<% title "Contact Person" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @contact_person.name %>
+</p>
+<p>
+  <strong>Position:</strong>
+  <%=h @contact_person.position %>
+</p>
+<p>
+  <strong>Picture URL:</strong>
+  <%=h @contact_person.picture_url %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%=h @contact_person.email %>
+</p>
+
+<p>
+  <%= link_to "Bearbeiten", edit_contact_person_path(@contact_person) %> |
+  <%= link_to "Löschen", @contact_person, :confirm => 'Sind Sie sicher?', :method => :delete %> |
+  <%= link_to "Zur Übersicht", contact_people_path %>
+</p>

@@ -1,0 +1,10 @@
+<% title @page.name, !@page.name.nil? %>
+
+<%= Liquid::Template.parse(@page.content).render('page' => @page, 'user' => current_user) %>
+
+<% if admin? %>
+	<p>
+	  <%= link_to "Diese Seite editieren", edit_page_path(@page) %> |
+	  <%= link_to_delete "Diese Seite löschen", @page %>
+	</p>
+<% end %>	

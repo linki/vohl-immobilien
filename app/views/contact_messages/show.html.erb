@@ -1,0 +1,24 @@
+<% title "Kontaktnachricht" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @contact_message.name %>
+</p>
+<p>
+  <strong>Company:</strong>
+  <%=h @contact_message.company %>
+</p>
+<p>
+  <strong>Email:</strong>
+  <%= mail_to h(@contact_message.email) %>
+</p>
+<p>
+  <strong>Message:</strong>
+  <%=h @contact_message.message %>
+</p>
+
+<p>
+  <%= link_to "Editieren", edit_contact_message_path(@contact_message) %> |
+  <%= link_to "Löschen", @contact_message, :confirm => 'Sind Sie sich sicher?', :method => :delete %> |
+  <%= link_to "Alle anzeigen", contact_messages_path %>
+</p>

@@ -1,0 +1,25 @@
+<% title "Items" %>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Name</th>
+    <th>Permalink</th>
+    <th>Content</th>
+    <th>Published</th>
+  </tr>
+  <% for item in @items %>
+    <tr>
+      <td><%=h item.type %></td>
+      <td><%=h item.name %></td>
+      <td><%=h item.permalink %></td>
+      <td><%=h item.content %></td>
+      <td><%=h item.published %></td>
+      <td><%= link_to "Anzeigen", item %></td>
+      <td><%= link_to "Bearbeiten", edit_item_path(item) %></td>
+      <td><%= link_to_delete "Löschen", item %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Item anlegen", new_item_path %></p>

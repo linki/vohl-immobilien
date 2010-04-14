@@ -1,0 +1,23 @@
+<% title "Kontaktnachrichten" %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Company</th>
+    <th>Email</th>
+    <th>Message</th>
+  </tr>
+  <% for contact_message in @contact_messages %>
+    <tr>
+      <td><%=h contact_message.name %></td>
+      <td><%=h contact_message.company %></td>
+      <td><%=h contact_message.email %></td>
+      <td><%=h contact_message.message %></td>
+      <td><%= link_to "Show", contact_message %></td>
+      <td><%= link_to "Edit", edit_contact_message_path(contact_message) %></td>
+      <td><%= link_to "Destroy", contact_message, :confirm => 'Sind Sie sich sicher?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Neue Kontaktnachricht", new_contact_message_path %></p>

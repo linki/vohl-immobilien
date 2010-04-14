@@ -1,0 +1,35 @@
+﻿<% title "Registrieren", false %>
+
+<h1>Registrieren</h1>
+<% @user.password = @user.password_confirmation = nil %>
+
+<%= error_messages_for :user,
+					   :header_message => "#{@user.errors.count} Fehler #{@user.errors.count == 1 ? "ist" : "sind"} noch in Ihrer Registrierung enthalten.",
+					   :message => "In folgenden Feldern sind Fehler aufgetreten:" %>
+<% form_for :user, :url => users_path do |f| -%>
+<p><%= label_tag :name, 'Ihr Name, Vorname' %><br/>
+<%= f.text_field :name %>
+Herr <%= f.radio_button :salutation, "Herr" %>
+Frau <%= f.radio_button :salutation, "Frau" %>
+</p>
+
+<p><%= label_tag :company, 'Firma' %><br/>
+<%= f.text_field :company %></p>
+
+<p><%= label_tag :phone, 'Telefon' %><br/>
+<%= f.text_field :phone %></p>
+
+<p><%= label_tag :login, 'Gewünschter Loginname' %><br/>
+<%= f.text_field :login %></p>
+
+<p><%= label_tag :email, 'Ihre Email' %><br/>
+<%= f.text_field :email %></p>
+
+<p><%= label_tag :password, 'Gewünschtes Passwort' %><br/>
+<%= f.password_field :password %></p>
+
+<p><%= label_tag :password_confirmation, 'Gewünschtes Passwort wiederholen' %><br/>
+<%= f.password_field :password_confirmation %></p>
+
+<p><%= submit_tag 'Registrieren' %></p>
+<% end -%>

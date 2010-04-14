@@ -1,0 +1,20 @@
+<%= error_messages_for :menu_item %>
+<% form_for @menu_item do |f| %>
+  <p>
+    <%= f.label :name, "Name" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :parent_id, "Übergeordnetes Element" %><br />
+    <%= f.collection_select :parent_id, MenuItem.ordered, :id, :name, :include_blank => '- keins -' %>
+  </p>
+  <p>
+    <%= f.label :page_id, "Verlinkt auf Seite" %><br />
+    <%= f.collection_select :page_id, Page.all, :id, :name, :include_blank => '- keine -' %>
+  </p>
+  <p>
+    <%= f.label :permalink, "oder Permalink (Achtung, Seitenenverlinkung auf - keine - setzen" %><br />
+    <%= f.text_field :permalink %>
+  </p>  
+  <p><%= f.submit "Abschicken" %></p>
+<% end %>

@@ -1,0 +1,51 @@
+set :application, "vohl-immobilien"
+set :repository,  "git://github.com/linki/#{application}.git"
+
+set :deploy_to, "/home/martin/www/#{application}"
+
+set :deploy_via, :export
+
+role :app, "92.51.134.239"
+role :web, "92.51.134.239"
+role :db,  "92.51.134.239", :primary => true
+
+set :scm, :git
+
+set :use_sudo, false
+
+namespace :deploy do
+  desc "Tell Passenger to restart the app."
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  desc "Symlink shared configs and folders on each release."
+  task :symlink_shared do
+    run "ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+    run "ln -nfs #{shared_path}/config/safe.conf #{release_path}/config/safe.conf"
+  end
+
+  desc "Update the crontab file"
+  task :update_crontab, :roles => :db do
+    run "cd #{release_path} && whenever --update-crontab #{application}"
+  end
+  
+  namespace :web do
+    task :disable, :roles => :web, :except => { :no_release => true } do
+      on_rollback {
+        run "rm #{shared_path}/system/maintenance.html"
+      }
+      run "ln -s #{current_path}/public/maintenance.html #{shared_path}/system/maintenance.html"
+    end
+  end  
+
+  task :start, :roles => :app do
+  end
+
+  task :stop, :roles => :app do
+  end
+end
+
+after 'deploy:update_code', 'deploy:symlink_shared'
+after "deploy:symlink", "deploy:update_crontab"
+after 'deploy', 'deploy:cleanup'

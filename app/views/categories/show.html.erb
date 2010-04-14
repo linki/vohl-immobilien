@@ -1,0 +1,16 @@
+<% title "Category" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @category.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%=h @category.description %>
+</p>
+
+<p>
+  <%= link_to "Bearbeiten", edit_category_path(@category) %> |
+  <%= link_to "Zur Übersicht", categories_path %>
+</p>

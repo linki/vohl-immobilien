@@ -1,0 +1,22 @@
+<% title "Passwort vergessen" %>
+
+<p>Bitte geben Sie ein neues Passwort ein für <%= @user.email %></p>
+
+<%= error_messages_for :user %>
+<% form_for :user do |f| -%>
+  <p>
+    <%= f.label :password, "Passwort" %><br />
+    <%= f.password_field :password %>
+  </p>
+  
+  <p>
+    <%= f.label :password_confirmation, "Passwort wiederholen" %><br />
+    <%= f.password_field :password_confirmation %>
+  </p>
+  
+  <p>
+    <%= f.submit "Abschicken" %>
+  </p>
+<% end %>
+
+

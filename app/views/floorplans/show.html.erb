@@ -1,0 +1,36 @@
+<% title "Grundriss" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @floorplan.name %>
+</p>
+<p>
+  <strong>Art:</strong>
+  <%=h @floorplan.kind %>
+</p>
+<p>
+  <strong>Lage:</strong>
+  <%=h @floorplan.location %>
+</p>
+<p>
+	<strong>Preis/m²:</strong>
+  <%= number_to_currency @floorplan.price_per_meter, :unit => "€", :separator => ",", :delimiter => ".", :format => "%n %u" %>
+</p>
+<p>
+  <strong>Kaufpreis:</strong>
+  <%= number_to_currency @floorplan.full_price, :unit => "€", :separator => ",", :delimiter => ".", :format => "%n %u" %>
+</p>
+<p>
+  <strong>Status:</strong>
+  <%=h @floorplan.status %>
+</p>
+<p>
+  <strong>Dateipfad:</strong>
+  <%=h @floorplan.file_url %>
+</p>
+
+<p>
+  <%= link_to "Editieren", edit_floorplan_path(@floorplan) %> |
+  <%= link_to "Löschen", @floorplan, :confirm => 'Sind Sie sich sicher?', :method => :delete %> |
+  <%= link_to "Alle anzeigen", floorplans_path %>
+</p>

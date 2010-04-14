@@ -1,0 +1,24 @@
+<%= error_messages_for :download %>
+<% form_for @download do |f| %>
+  <p>
+    <%= f.label :name, "Name" %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description, "Kurze Beschreibung" %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :url, "Url (mit http://)" %><br />
+    <%= f.text_field :url %>
+  </p>
+  <p>
+    <%= f.label :category, "Kategorie" %><br />
+	<%= f.collection_select :category_id, Category.find(:all), :id, :name, :prompt => "Kategorie auswählen" %>
+  	oder eine erstellen:
+  	<%= f.text_field :new_category_name %>
+  </p>
+  <p><%= f.submit "Abschicken" %></p>
+<% end %>
+
+

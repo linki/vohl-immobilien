@@ -1,0 +1,23 @@
+<% @floorplan = floorplan %>
+<tr>
+  <td><nobr><%= link_to floorplan.name, floorplan.file_url, :popup => true %></nobr></td>
+    <td><%=h floorplan.kind %></td>
+    <td><nobr><%=h floorplan.location %></nobr></td>
+	
+	<% if logged_in? %>
+          <td style="text-align:right"><nobr><%= number_to_currency floorplan.price_per_meter, :precision => 0, :unit => "€", :separator => ",", :delimiter => ".", :format => "%n %u" %></nobr></td>
+                <td style="text-align:right"><nobr><%= floorplan.square_meters.nil? ?  "keine Angabe" : "#{floorplan.square_meters} m²" %></nobr></td>
+                <td style="text-align:right"><nobr><%= number_to_currency floorplan.full_price, :precision => 0, :unit => "€", :separator => ",", :delimiter => ".", :format => "%n %u" %></nobr></td>
+	<% else %>	
+		<td colspan="3"><i><%= link_to "Bitte loggen Sie sich ein", login_path %></i></td>
+	<% end %>
+
+	<% if admin? %>
+		<td><%= in_place_editor_field :floorplan, 'status', {}, :cancel_text => "abbrechen", :save_text => "Ok", :saving_text => "Speichere gerade...", :click_to_edit_text => "Hier klicken um diesen Wert zu ändern" %></td>
+                <td><%= link_to up_image, up_floorplan_path(floorplan), :method => :put %><br /><%= link_to down_image, down_floorplan_path(floorplan), :method => :put %></td>
+	    <td><%= link_to edit_image, edit_floorplan_path(floorplan) %></td>
+	    <td><%= link_to_delete delete_image, floorplan %></td>
+	<% else %>
+		<td><%= floorplan.status %></td>	  
+	<% end %>  
+</tr>

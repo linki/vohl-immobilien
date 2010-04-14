@@ -1,0 +1,11 @@
+development:
+  domain: http://localhost:3000
+  webmaster: m.linkhorst@googlemail.com
+
+test:
+  domain: http://test.host
+  webmaster: m.linkhorst@googlemail.com
+
+production:
+  domain: http://www.vohl-immobilien.com
+  webmaster: kontakt@v-i-p-berlin.de

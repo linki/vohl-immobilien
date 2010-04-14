@@ -1,0 +1,7 @@
+<%% title "<%= singular_name.titleize %> anlegen" %>
+
+<%= render_form %>
+
+<%- if action? :index -%>
+<p><%%= link_to "Zur Übersicht", <%= plural_name %>_path %></p>
+<%- end -%>

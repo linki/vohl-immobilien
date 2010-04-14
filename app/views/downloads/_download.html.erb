@@ -1,0 +1,12 @@
+<li>
+  <strong><%= link_to_if logged_in?, download.name, download.url, :popup => true %></strong>
+  
+  <% if admin? %>
+    <%= link_to edit_image, edit_download_path(download) %>
+	<%= link_to_delete delete_image, download %>
+  <% end %>
+  
+	<% unless download.description.blank? %>
+		<br /><%= simple_format h(download.description) %>
+	<% end %>	
+</li>
