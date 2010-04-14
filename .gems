@@ -1,5 +1,5 @@
 rails --version '2.3.5'
 pg
 
-javan-whenever
-astrails-safe
+javan-whenever --source http://gems.github.com
+astrails-safe --source http://gems.github.com
