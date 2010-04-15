@@ -1,3 +1,4 @@
+# coding: utf-8
 class ContactMessagesController < ApplicationController
   
   require_role "admin",

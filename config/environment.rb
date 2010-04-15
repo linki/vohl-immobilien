@@ -80,4 +80,4 @@ Rails::Initializer.run do |config|
   config.active_record.observers = :user_observer
 end
 
-ExceptionNotifier.exception_recipients = "martin.linkhorst@student.hpi.uni-potsdam.de"
+ExceptionNotifier.exception_recipients = "m.linkhorst@googlemail.com"

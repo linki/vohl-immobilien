@@ -1,3 +1,4 @@
+# coding: utf-8
 class ItemsController < ApplicationController
   
   require_role "admin"

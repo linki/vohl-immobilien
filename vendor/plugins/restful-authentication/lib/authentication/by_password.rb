@@ -8,10 +8,10 @@ module Authentication
         
         # Virtual attribute for the unencrypted password
         attr_accessor :password
-        validates_presence_of     :password,                   :message => ": Feld darf nicht leer sein.",							:if => :password_required?
-        validates_presence_of     :password_confirmation,      :message => ": Bestätigungspasswort darf nicht leer sein.",			:if => :password_required?
-        validates_confirmation_of :password,                   :message => ": Original und Bestätigung stimmen nicht überein",		:if => :password_required?
-        validates_length_of       :password, :within => 6..40, :too_short => ": Passwort ist zu kurz (minimum sind 6 Buchstaben)",	:if => :password_required?
+        validates_presence_of     :password,                   :if => :password_required?
+        validates_presence_of     :password_confirmation,      :if => :password_required?
+        validates_confirmation_of :password,                   :if => :password_required?
+        validates_length_of       :password, :within => 6..40, :if => :password_required?
         before_save :encrypt_password
       end
     end # #included directives

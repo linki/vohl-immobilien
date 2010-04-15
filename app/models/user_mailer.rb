@@ -1,3 +1,4 @@
+# coding: utf-8
 class UserMailer < ActionMailer::Base
 
   def reset_notification(user)

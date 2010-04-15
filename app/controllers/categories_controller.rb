@@ -1,3 +1,4 @@
+# coding: utf-8
 class CategoriesController < ApplicationController
   
   require_role "admin"
@@ -17,7 +18,7 @@ class CategoriesController < ApplicationController
   def create
     @category = Category.new(params[:category])
     if @category.save
-      flash[:notice] = "Category erfolgreich erstellt."
+      flash[:notice] = "Kategorie erfolgreich erstellt."
       redirect_to @category
     else
       render :action => 'new'
@@ -31,7 +32,7 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.find(params[:id])
     if @category.update_attributes(params[:category])
-      flash[:notice] = "Category erfolgreich bearbeitet."
+      flash[:notice] = "Kategorie erfolgreich bearbeitet."
       redirect_to downloads_path
     else
       render :action => 'edit'
@@ -41,7 +42,7 @@ class CategoriesController < ApplicationController
   def destroy
     @category = Category.find(params[:id])
     @category.destroy
-    flash[:notice] = "Category erfolgreich gelöscht."
+    flash[:notice] = "Kategorie erfolgreich gelöscht."
     redirect_to categories_url
   end
 end

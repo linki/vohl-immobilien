@@ -1,3 +1,4 @@
+# coding: utf-8
 class PagesController < ApplicationController
   
   require_role "admin", :for_all_except => :show
